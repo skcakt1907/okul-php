@@ -10,12 +10,12 @@ $blogYazi  = getList('blog','durum=1','tarih DESC',3);
   <div class="container">
     <div class="row">
       <div class="col-lg-8">
-        <span class="hero-badge"><i class="bi bi-circle-fill"></i> Profesyonel · Güvenilir · Kurumsal</span>
-        <h1>Profesyonel Hizmet,<br>Güvenilir <span>Çözüm</span>,<br>Kurumsal Kalite.</h1>
+        <span class="hero-badge"><i class="bi bi-circle-fill"></i> Başarı · Rehberlik · Kaliteli Eğitim</span>
+        <h1>Başarıya Giden<br>Yolda <span>Yanınızdayız</span>,<br>Hedefe Birlikte.</h1>
         <p><?= e(ayar('site_aciklama')) ?></p>
         <div class="hero-cta">
-          <a href="<?= SITE_URL ?>/hizmetler" class="btn btn-orange me-md-2">Hizmetlerimiz <i class="bi bi-arrow-right ms-2"></i></a>
-          <a href="<?= SITE_URL ?>/teklif" class="btn btn-line">Teklif Al</a>
+          <a href="<?= SITE_URL ?>/hizmetler" class="btn btn-orange me-md-2">Kurslarımız <i class="bi bi-arrow-right ms-2"></i></a>
+          <a href="<?= SITE_URL ?>/teklif" class="btn btn-line">Ücretsiz Deneme Dersi</a>
         </div>
       </div>
     </div>
@@ -23,9 +23,9 @@ $blogYazi  = getList('blog','durum=1','tarih DESC',3);
   <div class="hero-meta d-none d-md-block">
     <div class="container">
       <div class="row g-3">
-        <div class="col-md-4 col-6"><div class="meta-item"><i class="bi bi-award-fill"></i><div><strong><?= e(ayar('yil')) ?>+ Yıl</strong><small>Sektör Tecrübesi</small></div></div></div>
-        <div class="col-md-4 col-6"><div class="meta-item"><i class="bi bi-people-fill"></i><div><strong>Uzman Kadro</strong><small>Alanında Deneyimli Ekip</small></div></div></div>
-        <div class="col-md-4 col-12"><div class="meta-item"><i class="bi bi-shield-check"></i><div><strong>Müşteri Memnuniyeti</strong><small>Kalite ve Güven Önceliğimiz</small></div></div></div>
+        <div class="col-md-4 col-6"><div class="meta-item"><i class="bi bi-award-fill"></i><div><strong><?= e(ayar('yil')) ?>+ Yıl</strong><small>Eğitim Tecrübesi</small></div></div></div>
+        <div class="col-md-4 col-6"><div class="meta-item"><i class="bi bi-mortarboard-fill"></i><div><strong>Uzman Eğitmenler</strong><small>Alanında Deneyimli Kadro</small></div></div></div>
+        <div class="col-md-4 col-12"><div class="meta-item"><i class="bi bi-graph-up-arrow"></i><div><strong>Kanıtlanmış Başarı</strong><small>Binlerce Mutlu Mezun</small></div></div></div>
       </div>
     </div>
   </div>
@@ -36,21 +36,21 @@ $blogYazi  = getList('blog','durum=1','tarih DESC',3);
     <div class="row align-items-center g-5">
       <div class="col-lg-6">
         <div class="about-img-wrap">
-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=85" alt="">
+          <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=900&q=85" alt="">
           <div class="exp-badge"><span class="num"><?= e(ayar('yil')) ?>+</span><span class="lbl">Yıllık Tecrübe</span></div>
         </div>
       </div>
       <div class="col-lg-6">
         <div class="section-head">
           <span class="mini">Hakkımızda</span>
-          <h2>Modern Altyapı,<br><span>Uzman Ekip</span></h2>
+          <h2>Sonuç Odaklı,<br><span>Öğrenci Merkezli</span></h2>
           <p class="desc"><?= e(ayar('hakkimizda_kisa')) ?></p>
         </div>
         <ul class="about-features">
-          <li><i class="bi bi-check"></i> Uzman ve Deneyimli Kadro</li>
-          <li><i class="bi bi-check"></i> Zamanında Teslim Garantisi</li>
-          <li><i class="bi bi-check"></i> Şeffaf Fiyatlandırma</li>
-          <li><i class="bi bi-check"></i> 7/24 Müşteri Desteği</li>
+          <li><i class="bi bi-check"></i> Az Mevcutlu Sınıflar</li>
+          <li><i class="bi bi-check"></i> Birebir Etüt & Öğrenci Koçluğu</li>
+          <li><i class="bi bi-check"></i> Düzenli Deneme Sınavları</li>
+          <li><i class="bi bi-check"></i> Veli Bilgilendirme Sistemi</li>
         </ul>
         <a href="<?= SITE_URL ?>/hakkimizda" class="btn btn-orange mt-4">Daha Fazla <i class="bi bi-arrow-right ms-2"></i></a>
       </div>
@@ -61,9 +61,9 @@ $blogYazi  = getList('blog','durum=1','tarih DESC',3);
 <section class="services-grid">
   <div class="container">
     <div class="section-head center">
-      <span class="mini">Hizmetlerimiz</span>
-      <h2>Sunduğumuz <span>Ana Hizmetler</span></h2>
-      <p class="desc">İhtiyacınıza özel, uçtan uca profesyonel çözümler sunuyoruz.</p>
+      <span class="mini">Kurslarımız</span>
+      <h2>Eğitim <span>Programlarımız</span></h2>
+      <p class="desc">Sınav hazırlıktan yabancı dile, kodlamadan kişisel gelişime; hedefinize uygun kurslar.</p>
     </div>
     <div class="row g-4">
       <?php foreach($hizmetler as $h): ?>
@@ -80,8 +80,8 @@ $blogYazi  = getList('blog','durum=1','tarih DESC',3);
         <a href="<?= SITE_URL ?>/teklif" class="service-card d-flex align-items-center justify-content-center text-decoration-none" style="background:var(--dark);color:#fff;min-height:100%">
           <div class="text-center">
             <i class="bi bi-arrow-up-right" style="font-size:2.5rem;color:var(--primary)"></i>
-            <h4 style="color:#fff;margin-top:1rem">Teklif Al</h4>
-            <p style="color:#9ca3af;margin:0">Ücretsiz teklif için tıklayın</p>
+            <h4 style="color:#fff;margin-top:1rem">Ücretsiz Deneme Dersi</h4>
+            <p style="color:#9ca3af;margin:0">Hemen kayıt olun, dersi deneyimleyin</p>
           </div>
         </a>
       </div>
@@ -93,9 +93,9 @@ $blogYazi  = getList('blog','durum=1','tarih DESC',3);
   <div class="container">
     <div class="row g-4">
       <div class="col-md-3 col-6"><div class="stat"><i class="bi bi-award-fill"></i><h3><?= e(ayar('yil')) ?>+</h3><p>Yıllık Tecrübe</p></div></div>
-      <div class="col-md-3 col-6"><div class="stat"><i class="bi bi-building"></i><h3><?= e(ayar('proje_sayi')) ?>+</h3><p>Tamamlanan Proje</p></div></div>
-      <div class="col-md-3 col-6"><div class="stat"><i class="bi bi-people-fill"></i><h3><?= e(ayar('musteri_sayi')) ?>+</h3><p>Mutlu Müşteri</p></div></div>
-      <div class="col-md-3 col-6"><div class="stat"><i class="bi bi-person-badge"></i><h3><?= e(ayar('personel_sayi')) ?>+</h3><p>Uzman Personel</p></div></div>
+      <div class="col-md-3 col-6"><div class="stat"><i class="bi bi-mortarboard"></i><h3><?= e(ayar('proje_sayi')) ?>+</h3><p>Başarılı Mezun</p></div></div>
+      <div class="col-md-3 col-6"><div class="stat"><i class="bi bi-people-fill"></i><h3><?= e(ayar('musteri_sayi')) ?>+</h3><p>Eğitilen Öğrenci</p></div></div>
+      <div class="col-md-3 col-6"><div class="stat"><i class="bi bi-person-badge"></i><h3><?= e(ayar('personel_sayi')) ?>+</h3><p>Uzman Eğitmen</p></div></div>
     </div>
   </div>
 </section>
@@ -104,10 +104,10 @@ $blogYazi  = getList('blog','durum=1','tarih DESC',3);
   <div class="container">
     <div class="section-head d-flex justify-content-between align-items-end flex-wrap">
       <div>
-        <span class="mini">Projelerimiz</span>
-        <h2>Son <span>Çalışmalarımız</span></h2>
+        <span class="mini">Başarılarımız</span>
+        <h2>Başarı & <span>Kampüs Galerimiz</span></h2>
       </div>
-      <a href="<?= SITE_URL ?>/projeler" class="btn btn-orange">Tüm Projeler <i class="bi bi-arrow-right ms-2"></i></a>
+      <a href="<?= SITE_URL ?>/projeler" class="btn btn-orange">Tümünü Gör <i class="bi bi-arrow-right ms-2"></i></a>
     </div>
     <div class="row g-4">
       <?php foreach($projeler as $p): ?>
@@ -129,7 +129,7 @@ $blogYazi  = getList('blog','durum=1','tarih DESC',3);
   <div class="container">
     <div class="section-head center">
       <span class="mini">Referanslar</span>
-      <h2>Müşterilerimiz <span>Ne Diyor?</span></h2>
+      <h2>Öğrenci & Velilerimiz <span>Ne Diyor?</span></h2>
     </div>
     <div class="row g-4">
       <?php foreach($referanslar as $r): ?>
@@ -151,8 +151,8 @@ $blogYazi  = getList('blog','durum=1','tarih DESC',3);
 <section class="cta-strip">
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-lg-8"><h3>Projeniz için ücretsiz teklif alın</h3><p>İhtiyacınızı dinliyor, size en uygun çözümü ve maliyeti çıkarıyoruz.</p></div>
-      <div class="col-lg-4 text-lg-end mt-3 mt-lg-0"><a href="<?= SITE_URL ?>/teklif" class="btn">Teklif Talebi Gönder <i class="bi bi-arrow-right ms-2"></i></a></div>
+      <div class="col-lg-8"><h3>Ücretsiz deneme dersi ve seviye tespiti için bize ulaşın</h3><p>Hedefinizi konuşalım, size en uygun programı belirleyelim ve dersi ücretsiz deneyimleyin.</p></div>
+      <div class="col-lg-4 text-lg-end mt-3 mt-lg-0"><a href="<?= SITE_URL ?>/teklif" class="btn">Hemen Kayıt Ol <i class="bi bi-arrow-right ms-2"></i></a></div>
     </div>
   </div>
 </section>
@@ -161,7 +161,7 @@ $blogYazi  = getList('blog','durum=1','tarih DESC',3);
   <div class="container">
     <div class="section-head center">
       <span class="mini">Blog</span>
-      <h2>Sektörden <span>Güncel Yazılar</span></h2>
+      <h2>Eğitim & <span>Sınav Rehberi</span></h2>
     </div>
     <div class="row g-4">
       <?php foreach($blogYazi as $b): ?>

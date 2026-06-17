@@ -1,13 +1,13 @@
 -- ============================================
--- TEMA MASTER (Kurumsal/Hizmet Arketipi) — Kurulum SQL
--- Markasız ana şablon. Yeni tema için: DB adını + içerikleri değiştir.
--- Kullanım: phpMyAdmin > tema_master DB > Import
+-- EĞİTİM / KURS / AKADEMİ TEMASI — Kurulum SQL
+-- Tema Master (Kurumsal/Hizmet arketipi) tabanlı.
+-- Kullanım: phpMyAdmin > okul_db > Import  (veya: mysql -u root < kurulum.sql)
 -- ============================================
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
-CREATE DATABASE IF NOT EXISTS `tema_master` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `tema_master`;
+CREATE DATABASE IF NOT EXISTS `okul_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `okul_db`;
 
 -- ============ AYARLAR ============
 DROP TABLE IF EXISTS `ayarlar`;
@@ -17,25 +17,25 @@ CREATE TABLE `ayarlar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `ayarlar` (`anahtar`,`deger`) VALUES
-('site_adi','Firma Adınız'),
-('site_baslik','Firma Adınız — Profesyonel Çözüm Ortağınız'),
-('site_aciklama','Sektöründe uzman ekibiyle kaliteli, güvenilir ve müşteri odaklı hizmet sunan firmanızın kurumsal tanıtım sitesi.'),
+('site_adi','Akademi Adınız'),
+('site_baslik','Akademi Adınız — Başarıya Giden Yolda Yanınızda'),
+('site_aciklama','Üniversite ve lise sınavlarına hazırlık, yabancı dil, kodlama ve kişisel gelişim kurslarıyla öğrencilerimizi hedeflerine ulaştıran eğitim kurumu. Uzman eğitmen kadrosu ve kanıtlanmış başarı.'),
 ('telefon','+90 555 000 00 00'),
 ('telefon2','+90 532 000 00 00'),
-('mail','info@firmaadiniz.com'),
-('adres','Merkez Mah. Örnek Cad. No:1, İlçe / İl'),
-('calisma_saati','Pzt - Cmt: 09:00 - 18:00'),
-('hakkimizda_kisa','Firmanız hakkında kısa bir tanıtım yazısı. Bu metni admin panelinden düzenleyebilirsiniz. Uzmanlık alanlarınızı ve değerlerinizi burada özetleyin.'),
-('hakkimizda_uzun','Firmanız hakkında detaylı tanıtım metni buraya gelir. Kuruluş hikayeniz, vizyonunuz, hizmet anlayışınız ve sizi rakiplerinizden ayıran özellikleriniz bu alanda anlatılır. Admin panelindeki Ayarlar bölümünden bu metni dilediğiniz gibi güncelleyebilirsiniz. Modern altyapı, uzman kadro ve müşteri memnuniyeti odaklı çalışma prensibimizle her ölçekte işi zamanında ve kaliteyle teslim ediyoruz.'),
-('misyon','Müşterilerimize sektör standartlarının üzerinde, güvenilir ve sürdürülebilir çözümler sunmak; her projede kalite ve memnuniyeti önceliklendirmek.'),
-('vizyon','Faaliyet gösterdiğimiz alanda öncü, tercih edilen ve güvenilir marka olmak; yenilikçi yaklaşımlarla sektöre değer katmak.'),
-('yil','10'),
-('proje_sayi','250'),
-('musteri_sayi','500'),
-('personel_sayi','25'),
+('mail','info@akademiadiniz.com'),
+('adres','Merkez Mah. Bilgi Cad. No:1, İlçe / İl'),
+('calisma_saati','Pzt - Cmt: 09:00 - 21:00'),
+('hakkimizda_kisa','Her öğrencinin potansiyelini ortaya çıkaran, sonuç odaklı ve öğrenci merkezli bir eğitim anlayışıyla hedeflerinize giden yolda yanınızdayız. Başarımızın sırrı: doğru rehberlik ve uzman kadro.'),
+('hakkimizda_uzun','Akademimiz, 16 yılı aşkın deneyimiyle binlerce öğrenciyi hayallerindeki üniversitelere ve okullara hazırladı. Sınav odaklı müfredatımız, düzenli deneme sınavları, birebir etüt ve koçluk sistemimiz, az mevcutlu sınıflarımız ve ölçme-değerlendirme altyapımızla her öğrencinin gelişimini bireysel olarak takip ediyoruz. Üniversite (YKS) ve lise (LGS) hazırlık programlarımızın yanı sıra İngilizce ve yabancı dil kurslarımız, kodlama-robotik atölyelerimiz ve kişisel gelişim eğitimlerimizle öğrencilerimizi sadece sınava değil, geleceğe hazırlıyoruz. Veli bilgilendirme sistemimizle sürecin her aşamasında ailelerle birlikteyiz.'),
+('misyon','Her öğrenciyi bireysel olarak tanıyıp doğru rehberlikle desteklemek; akademik başarıyı, özgüveni ve öğrenme sevgisini bir arada kazandırmak.'),
+('vizyon','Eğitimde kalite ve başarının referans kurumu olmak; öğrencilerimizin yalnızca sınavlarda değil hayatta da başarılı bireyler olmasını sağlamak.'),
+('yil','16'),
+('proje_sayi','8500'),
+('musteri_sayi','12000'),
+('personel_sayi','45'),
 ('facebook','#'),('instagram','#'),('twitter','#'),('linkedin','#'),('youtube','#');
 
--- ============ HİZMETLER ============
+-- ============ HİZMETLER (Kurslar / Programlar) ============
 DROP TABLE IF EXISTS `hizmetler`;
 CREATE TABLE `hizmetler` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
@@ -43,7 +43,7 @@ CREATE TABLE `hizmetler` (
   `slug` VARCHAR(180),
   `ozet` TEXT,
   `icerik` LONGTEXT,
-  `ikon` VARCHAR(60) DEFAULT 'bi-building',
+  `ikon` VARCHAR(60) DEFAULT 'bi-mortarboard',
   `gorsel` VARCHAR(255),
   `sira` INT DEFAULT 0,
   `durum` TINYINT DEFAULT 1,
@@ -51,14 +51,14 @@ CREATE TABLE `hizmetler` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `hizmetler` (`baslik`,`slug`,`ozet`,`icerik`,`ikon`,`gorsel`,`sira`) VALUES
-('Profesyonel Danışmanlık','profesyonel-danismanlik','İhtiyaçlarınıza özel, uzman ekibimizle profesyonel danışmanlık hizmeti.','Bu hizmetin detaylı açıklamasını admin panelinden düzenleyebilirsiniz. Deneyimli kadromuzla size en uygun çözümleri sunuyor, sürecin her aşamasında yanınızda oluyoruz.','bi-lightbulb','https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80',1),
-('Proje Yönetimi','proje-yonetimi','Planlamadan teslime, projelerinizi uçtan uca profesyonelce yönetiyoruz.','Bu hizmetin detaylı açıklamasını admin panelinden düzenleyebilirsiniz. Zamanında teslim, bütçe kontrolü ve kalite yönetimi ilkelerimizle projelerinizi güvenle yürütüyoruz.','bi-diagram-3','https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80',2),
-('Teknik Servis & Destek','teknik-servis-destek','Hızlı, güvenilir ve kesintisiz teknik servis ve destek hizmeti.','Bu hizmetin detaylı açıklamasını admin panelinden düzenleyebilirsiniz. Uzman teknik ekibimizle sorunlarınıza hızlı çözüm üretiyor, kesintisiz destek sağlıyoruz.','bi-tools','https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80',3),
-('Kurumsal Çözümler','kurumsal-cozumler','İşletmenize özel, ölçeklenebilir ve verimli kurumsal çözümler.','Bu hizmetin detaylı açıklamasını admin panelinden düzenleyebilirsiniz. Firmanızın ihtiyaçlarına göre tasarlanmış kurumsal çözümlerle verimliliğinizi artırıyoruz.','bi-building-gear','https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80',4),
-('Bakım & Onarım','bakim-onarim','Düzenli bakım ve hızlı onarım hizmetleriyle sürekliliği garanti ediyoruz.','Bu hizmetin detaylı açıklamasını admin panelinden düzenleyebilirsiniz. Periyodik bakım planları ve hızlı onarım hizmetimizle işlerinizin aksamasını önlüyoruz.','bi-wrench-adjustable','https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=800&q=80',5),
-('Anahtar Teslim Hizmet','anahtar-teslim-hizmet','Baştan sona tüm süreci üstlenip işinizi anahtar teslim tamamlıyoruz.','Bu hizmetin detaylı açıklamasını admin panelinden düzenleyebilirsiniz. Tek muhatap, eksiksiz koordinasyon ve garantili teslim ile sürecin tamamını sizin için yönetiyoruz.','bi-key','https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',6);
+('Üniversite Hazırlık (YKS)','universite-hazirlik-yks','TYT-AYT odaklı, düzenli deneme ve birebir koçlukla üniversite sınavına tam hazırlık.','YKS hazırlık programımızda TYT ve AYT müfredatı baştan sona, konu eksiği bırakmadan işlenir. Haftalık deneme sınavları, soru çözüm kampları, birebir etüt ve öğrenci koçluğu sistemiyle her öğrencinin net gelişimini takip eder, hedef üniversitesine ulaşması için kişiselleştirilmiş bir yol haritası çıkarırız.','bi-mortarboard','https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80',1),
+('Lise Hazırlık (LGS)','lise-hazirlik-lgs','8. sınıf öğrencilerine özel, LGS odaklı sınav hazırlık ve takip programı.','LGS hazırlık programımız, 8. sınıf öğrencilerini hedefledikleri liselere taşımak için tasarlandı. Az mevcutlu sınıflar, düzenli kazanım testleri, deneme sınavları ve veli bilgilendirme sistemiyle öğrencinin akademik gelişimini sürekli izler, eksikleri zamanında kapatırız.','bi-book','https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&q=80',2),
+('İngilizce Dil Kursu','ingilizce-dil-kursu','Başlangıçtan ileri seviyeye, konuşma odaklı ve seviye gruplu İngilizce eğitimi.','İngilizce kurslarımız A1''den C1''e tüm seviyeleri kapsar. Konuşma (speaking) ağırlıklı, etkileşimli ders işleyişimiz, native/uzman eğitmenlerimiz ve uluslararası sınav (IELTS/TOEFL) hazırlık desteğimizle öğrencilerimiz dili gerçekten kullanmayı öğrenir.','bi-translate','https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=800&q=80',3),
+('Yabancı Dil (Almanca/Fransızca)','yabanci-dil','Almanca, Fransızca ve diğer dillerde seviye gruplu kurslar ve sınav hazırlığı.','İngilizce dışında Almanca, Fransızca, İspanyolca ve diğer dillerde seviye gruplu kurslar sunuyoruz. Goethe, DELF gibi uluslararası sertifika sınavlarına hazırlık ve yurt dışı eğitim danışmanlığı da hizmetlerimiz arasındadır.','bi-globe2','https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800&q=80',4),
+('Kodlama & Robotik','kodlama-robotik','Çocuk ve gençlere yönelik, projeye dayalı kodlama ve robotik atölyeleri.','Geleceğin becerilerini bugünden kazandırıyoruz. Scratch, Python ve robotik setlerle yaş gruplarına uygun, projeye dayalı kodlama atölyelerimizde öğrenciler problem çözme, algoritmik düşünme ve yaratıcılık becerilerini geliştirir.','bi-cpu','https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&q=80',5),
+('Kişisel Gelişim & Koçluk','kisisel-gelisim-kocluk','Verimli ders çalışma, sınav kaygısı yönetimi ve hedef belirleme koçluğu.','Akademik başarı kadar doğru çalışma alışkanlıkları ve motivasyon da önemlidir. Öğrenci koçluğu, verimli ders çalışma teknikleri, zaman yönetimi ve sınav kaygısıyla başa çıkma eğitimlerimizle öğrencilerimizi bütünsel olarak destekliyoruz.','bi-lightbulb','https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',6);
 
--- ============ PROJELER / GALERİ ============
+-- ============ PROJELER / BAŞARILARIMIZ (Galeri) ============
 DROP TABLE IF EXISTS `projeler`;
 CREATE TABLE `projeler` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
@@ -74,12 +74,12 @@ CREATE TABLE `projeler` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `projeler` (`baslik`,`slug`,`kategori`,`gorsel`,`aciklama`,`tarih`,`sira`) VALUES
-('Örnek Proje 1','ornek-proje-1','Kategori A','https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80','Bu projenin açıklamasını admin panelinden düzenleyebilirsiniz.','2025',1),
-('Örnek Proje 2','ornek-proje-2','Kategori A','https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80','Bu projenin açıklamasını admin panelinden düzenleyebilirsiniz.','2025',2),
-('Örnek Proje 3','ornek-proje-3','Kategori B','https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80','Bu projenin açıklamasını admin panelinden düzenleyebilirsiniz.','2025',3),
-('Örnek Proje 4','ornek-proje-4','Kategori B','https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80','Bu projenin açıklamasını admin panelinden düzenleyebilirsiniz.','2024',4),
-('Örnek Proje 5','ornek-proje-5','Kategori C','https://images.unsplash.com/photo-1431540015161-0bf868a2d407?w=800&q=80','Bu projenin açıklamasını admin panelinden düzenleyebilirsiniz.','2024',5),
-('Örnek Proje 6','ornek-proje-6','Kategori C','https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=800&q=80','Bu projenin açıklamasını admin panelinden düzenleyebilirsiniz.','2024',6);
+('YKS Türkiye Dereceleri','yks-turkiye-dereceleri','Başarı','https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=800&q=80','Öğrencilerimizin YKS''de elde ettiği Türkiye derecelerimiz ve ilk 1000 sıralamaları.','2025',1),
+('LGS Tam Puan Başarıları','lgs-tam-puan','Başarı','https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80','LGS''de tam puan ve yüksek yüzdelik dilim elde eden öğrencilerimizle gurur duyuyoruz.','2025',2),
+('Modern Dersliklerimiz','modern-dersliklerimiz','Kampüs','https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80','Az mevcutlu, teknolojik donanımlı ve öğrenmeye odaklı modern dersliklerimiz.','Kampüs',3),
+('Kütüphane & Etüt Salonu','kutuphane-etut-salonu','Kampüs','https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=800&q=80','Sessiz çalışma ortamı sunan kütüphanemiz ve birebir etüt salonlarımız.','Kampüs',4),
+('Mezuniyet & Ödül Töreni','mezuniyet-odul-toreni','Etkinlik','https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&q=80','Başarılı öğrencilerimizi ödüllendirdiğimiz coşkulu mezuniyet ve ödül törenimiz.','Etkinlik',5),
+('Bilim & Proje Şenliği','bilim-proje-senligi','Etkinlik','https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=800&q=80','Öğrencilerimizin hazırladığı bilim ve kodlama projelerini sergilediği şenliğimiz.','Etkinlik',6);
 
 -- ============ BLOG ============
 DROP TABLE IF EXISTS `blog`;
@@ -97,9 +97,9 @@ CREATE TABLE `blog` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `blog` (`baslik`,`slug`,`kategori`,`ozet`,`icerik`,`gorsel`,`tarih`) VALUES
-('Örnek Blog Yazısı Başlığı 1','ornek-blog-1','Genel','Blog yazınızın kısa özeti buraya gelir. Admin panelinden düzenleyebilirsiniz.','Blog yazınızın tam içeriği buraya gelir. Admin panelindeki Blog bölümünden yeni yazı ekleyebilir, mevcut yazıları düzenleyebilir veya silebilirsiniz.','https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&q=80','2026-05-01'),
-('Örnek Blog Yazısı Başlığı 2','ornek-blog-2','Genel','Blog yazınızın kısa özeti buraya gelir. Admin panelinden düzenleyebilirsiniz.','Blog yazınızın tam içeriği buraya gelir. Admin panelindeki Blog bölümünden yeni yazı ekleyebilir, mevcut yazıları düzenleyebilir veya silebilirsiniz.','https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800&q=80','2026-04-15'),
-('Örnek Blog Yazısı Başlığı 3','ornek-blog-3','Genel','Blog yazınızın kısa özeti buraya gelir. Admin panelinden düzenleyebilirsiniz.','Blog yazınızın tam içeriği buraya gelir. Admin panelindeki Blog bölümünden yeni yazı ekleyebilir, mevcut yazıları düzenleyebilir veya silebilirsiniz.','https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&q=80','2026-03-20');
+('YKS''ye Son 3 Ayda Verimli Çalışma Planı','yks-son-3-ay-calisma-plani','Sınav','Sınava sayılı gün kala netlerinizi yükseltecek, denenmiş ve etkili bir çalışma stratejisi.','Sınava son üç ay, doğru planlandığında netleri ciddi biçimde yükseltebilen kritik bir dönemdir. Bu dönemde yeni konu öğrenmek yerine eksik kapatmaya, düzenli deneme çözüp analiz etmeye ve güçlü olduğunuz derslerden net garantilemeye odaklanmak gerekir. Bu yazıda haftalık örnek bir program ve deneme analizi yöntemini paylaşıyoruz.','https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80','2026-05-14'),
+('Sınav Kaygısıyla Başa Çıkmanın 5 Yolu','sinav-kaygisi-basa-cikma','Rehberlik','Sınav kaygısı performansı düşürebilir. İşte öğrencilerimize önerdiğimiz etkili teknikler.','Sınav kaygısı, birçok başarılı öğrencinin bile performansını olumsuz etkileyebilir. Nefes egzersizleri, gerçekçi hedef belirleme, düzenli uyku ve deneme sınavlarıyla sınav ortamına alışmak kaygıyı yönetmenin etkili yollarıdır. Bu yazıda rehberlik servisimizin önerdiği 5 pratik tekniği anlattık.','https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800&q=80','2026-04-22'),
+('Çocuğunuz İçin Doğru Yabancı Dil Yaşı','dogru-yabanci-dil-yasi','Eğitim','Yabancı dil eğitimine başlamak için ideal yaş ve etkili öğrenme yöntemleri hakkında.','Araştırmalar, yabancı dil öğreniminde erken yaşların avantajlı olduğunu gösterir; ancak her yaşta etkili öğrenme mümkündür. Önemli olan dili oyun, müzik ve gerçek iletişim yoluyla, baskı olmadan sevdirmektir. Bu yazıda yaş gruplarına göre dil öğrenme önerilerimizi bulabilirsiniz.','https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80','2026-03-28');
 
 -- ============ REFERANSLAR ============
 DROP TABLE IF EXISTS `referanslar`;
@@ -114,9 +114,9 @@ CREATE TABLE `referanslar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `referanslar` (`ad`,`unvan`,`yorum`,`foto`,`yildiz`) VALUES
-('Müşteri Adı 1','Ünvan / Firma','Müşteri yorumu buraya gelir. Admin panelinden düzenleyebilirsiniz. Memnuniyet ifadeleri güven oluşturur.','https://i.pravatar.cc/100?img=12',5),
-('Müşteri Adı 2','Ünvan / Firma','Müşteri yorumu buraya gelir. Admin panelinden düzenleyebilirsiniz. Memnuniyet ifadeleri güven oluşturur.','https://i.pravatar.cc/100?img=32',5),
-('Müşteri Adı 3','Ünvan / Firma','Müşteri yorumu buraya gelir. Admin panelinden düzenleyebilirsiniz. Memnuniyet ifadeleri güven oluşturur.','https://i.pravatar.cc/100?img=15',5);
+('Berk A.','Tıp Fakültesi Öğrencisi','YKS hazırlık sürecinde koçumun desteği ve düzenli denemeler net farkı yarattı. Hedefim olan tıp fakültesini kazandım. İyi ki buradaydım.','https://i.pravatar.cc/100?img=14',5),
+('Zeynep T. (Veli)','8. sınıf velisi','Kızımın LGS sürecinde hem akademik hem motivasyon desteği aldık. Veli bilgilendirme sistemi sayesinde her aşamadan haberdardık. Çok memnunuz.','https://i.pravatar.cc/100?img=44',5),
+('Emre Y.','İngilizce Kursu Öğrencisi','Konuşma ağırlıklı dersler sayesinde 6 ayda akıcı İngilizce konuşmaya başladım. Eğitmenler çok ilgili ve dersler keyifli.','https://i.pravatar.cc/100?img=60',5);
 
 -- ============ MESAJLAR ============
 DROP TABLE IF EXISTS `mesajlar`;
@@ -131,7 +131,7 @@ CREATE TABLE `mesajlar` (
   `tarih` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- ============ TEKLİFLER ============
+-- ============ TEKLİFLER (Kayıt / Deneme Dersi Talepleri) ============
 DROP TABLE IF EXISTS `teklifler`;
 CREATE TABLE `teklifler` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
